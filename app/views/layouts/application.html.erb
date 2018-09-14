@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MusicApp</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+  <header>
+    Music App
+  </header>
+    <head>
+      <title>MusicApp</title>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
 
   <body>
     <%= yield %>
   </body>
+
+  <% if logged_in? %>
+  <h2> <%= current_user.email %>
+    </h2>
+    <input type="submit" name="" value="Logout">
+  <% else %>
+     <!-- link to login , link to sign up   -->
+     <a href="<%=new_user_url%>"> Sign Up</a>
+     <a href=" <%= new_session_url %> ">Login</a>
+  <% end %>
+
 </html>
